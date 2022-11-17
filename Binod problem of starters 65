@@ -1,0 +1,49 @@
+ /* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner in = new Scanner(System.in);
+		int T = in.nextInt();
+		while(T-- > 0) {
+		    int N = in.nextInt();
+		    int q = in.nextInt();
+		    int[][] arr = new int[N+1][61];
+		    arr[0] = new int[61];
+		    for(int i = 1; i <= N; i++) {
+		        long num = in.nextLong();
+		        int[] temp = arr[i-1].clone();
+		        int idx = 0;
+		        while(num > 0) {
+		            if((1&num) != 0) temp[idx]++;
+		            num = num>>1;
+		            idx++;
+		        }
+		        arr[i] = temp;
+		    }
+		    for(int i = 0; i < q; i++) {
+		        int k = in.nextInt();
+		        int l1 = in.nextInt();
+		        int r1 = in.nextInt();
+		        int l2 = in.nextInt();
+		        int r2 = in.nextInt();
+		        
+		        long a1 = r1-l1+1;
+		        long b1 = r2-l2+1;
+		        
+		        long ans = 0;
+		        ans += ((long)arr[r1][k]-arr[l1-1][k])*(b1-(long)(arr[r2][k]-arr[l2-1][k]));
+		        ans += (a1-(long)(arr[r1][k]-arr[l1-1][k]))*((long)arr[r2][k]-arr[l2-1][k]);
+		        System.out.println(ans);
+		    }
+		}
+	}
+}
+
