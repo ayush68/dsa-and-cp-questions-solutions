@@ -1,0 +1,24 @@
+import java.util.*;
+import java.io.*;
+public class Solution{
+ public static void main(String[] args){
+  Scanner sc = new Scanner(System.in);
+  int t= sc.nextInt();
+  while(t-->0){
+   int n= sc.nextInt();
+   String s =  sc.next();
+   String ans="";
+   int onecount=0;
+   if(s.charAt(0)=='1') onecount++;
+   for(int i=1; i<s.length(); i++){
+    if(s.charAt(i)=='1') onecount++;
+    if(onecount==2){
+      ans=ans+"-";
+      onecount=0;
+    }
+    else ans=ans+"+";
+   }
+System.out.println(ans);
+  }
+ }
+}
